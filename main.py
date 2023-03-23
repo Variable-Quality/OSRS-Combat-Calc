@@ -2,6 +2,15 @@ from bs4 import BeautifulSoup
 import requests
 import csv
 
+#TODO:
+#Need to be able to calculate max hit, attack roll, defence roll, and hit chance
+#Do different calculations for with/without prayer, present all to user
+#Dont worry about niche cases yet, just get the basics working
+#Cache weapons in a local csv on first run, update periodically
+
+
+
+
 URLS = {"One Handed":"https://oldschool.runescape.wiki/w/Weapon_slot_table",
         "Two Handed":"https://oldschool.runescape.wiki/w/Two-handed_slot_table"}
 
@@ -17,5 +26,8 @@ for row in table.find_all("tr")[1:]:
 
         print(f"\n{item_name}: \n")
         print(item_stats)
+
+
+def str_bonus():
 
 
