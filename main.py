@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
+import player
 
 #TODO:
 #Need to be able to calculate max hit, attack roll, defence roll, and hit chance
@@ -18,16 +19,16 @@ data = requests.get(URLS["One Handed"]).text
 soup = BeautifulSoup(data, 'html.parser')
 
 table = soup.find_all("tbody")[1]
-i = 0
-for row in table.find_all("tr")[1:]:
-        row_info = row.find_all("td")
-        item_name = row_info[1].text
-        item_stats = row_info[3:]
+#for row in table.find_all("tr")[1:]:
+        #row_info = row.find_all("td")
+        #item_name = row_info[1].text
+        #item_stats = row_info[3:]
 
-        print(f"\n{item_name}: \n")
-        print(item_stats)
+        #print(f"\n{item_name}: \n")
+        #print(item_stats)
 
 
-def str_bonus():
+p = player.Player(97,100,0,1,0)
 
+print(p.max_hit())
 
