@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
-import player
+from player import Player
 
 #TODO:
 #Need to be able to calculate max hit, attack roll, defence roll, and hit chance
@@ -28,7 +28,7 @@ table = soup.find_all("tbody")[1]
         #print(item_stats)
 
 
-p = player.Player(97,100,0,1,0)
+p = Player(97,100,0,1,0)
 
 print(p.max_hit())
 
