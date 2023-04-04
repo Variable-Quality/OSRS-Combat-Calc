@@ -10,6 +10,7 @@ cfgParser = configparser.ConfigParser()
 cfgParser.read_file(open(configPath))
 
 url_dict = cfgParser["URL"]
+exempt_items = str(cfgParser["EXEMPT"]).split(",")
 
 #Ensures all cache csv files exist
 for key in url_dict.keys():
@@ -37,6 +38,10 @@ def update():
             row_info = row.find_all("td")
             item_info = {}
             #row_info[2] is if its f2p or not, could be useful in the future?
+            temp = row_info[1].text.split("#")[0]
+            if "last man standing" in temp.lower() or temp.lower() in exempt_items:
+                continue
+
             item_info["Name"] = row_info[1].text
             item_info["Stab"] = row_info[3].text
             item_info["Slash"] = row_info[4].text
@@ -54,6 +59,10 @@ def update():
             item_info["Magic Strength"] = row_info[15].text
             item_info["Prayer"] = row_info[16].text
             item_info["Weight"] = row_info[17].text
+            try:
+                item_info["Speed"] = row_info[18].text
+            except IndexError:
+                print("Item is not a weapon and thus does not have a speed identifier.")
             
             fieldnames = item_info.keys()
             #Need to fit a date in here somehow

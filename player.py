@@ -1,10 +1,10 @@
 import math
+import equipment
 
 class Player:
     #Will need to add mage/ranged stuff too but melee will work for now
-    def __init__(self, str_lvl, str_bonus, boost, prayer, style_bonus, void=False, salve=False, salve_i=False, slayer=False):
+    def __init__(self, str_lvl, str_bonus, boost, prayer, style_bonus, equipment, void=False, salve=False, salve_i=False, slayer=False):
         self.str_lvl = str_lvl
-        self.str_bonus = str_bonus
         self.boost = boost
         self.prayer = prayer
         self.style_bonus = style_bonus
@@ -12,6 +12,10 @@ class Player:
         self.salve = salve
         self.salve_i = salve_i
         self.slayer = slayer
+        self.equipment = equipment
+
+    def get_equipment_stats(self):
+        stats = self.equipment.get_bonuses()
 
     def eff_str_lvl(self):
         str = ((self.str_lvl + self.boost) * self.prayer) + self.style_bonus + 8

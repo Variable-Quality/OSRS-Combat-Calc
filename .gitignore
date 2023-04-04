@@ -10,3 +10,4 @@ cache/one handed.csv
 cache/ring.csv
 cache/shield.csv
 cache/two handed.csv
+scraping.py
