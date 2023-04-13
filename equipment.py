@@ -3,8 +3,9 @@
 class Equipment:
 
     #Types:
-    #Armor, 1h, 2h
-    def __init__(self, type, stab, slash, crush, mage, ranged, stab_def, slash_def, crush_def, mage_def, range_def, str, range_str, mage_str, pray, weight, ticks=0):
+    #0 = Armor, 1 = 1h, 2 = 2h
+    def __init__(self, name, type, stab, slash, crush, mage, ranged, stab_def, slash_def, crush_def, mage_def, range_def, str, range_str, mage_str, pray, weight, ticks=-1):
+        self.name = name
         self.type = type
         self.stab = stab
         self.slash = slash
@@ -37,6 +38,9 @@ class Loadout:
         self.off_hand = off_hand
         self.ring = ring
         self.gloves = gloves
+
+    def asdict(self):
+        return self.__dict__
 
     def update_equipment(self, slot, new):
 
@@ -90,5 +94,6 @@ class Loadout:
         ret["ticks"] = self.ticks
 
         return ret
+
 
 
