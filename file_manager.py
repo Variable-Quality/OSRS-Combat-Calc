@@ -84,7 +84,11 @@ class Cache_Manager():
     def __init__(self):
         self.csv_fieldnames = ["Name", "Stab", "Slash", "Crush", "Magic", "Range", "Stab Def", "Slash Def", "Crush Def", "Magic Def", "Range Def", "Strength", "Ranged Strength", "Magic Strength", "Prayer", "Weight", "Speed"]
         
+<<<<<<< HEAD
     def write_csv(csv_path: str, data, fieldnames, dict=True, append=True, ):
+=======
+    def write_csv(csv_path, data, fieldnames, dict=True, append=True, ):
+>>>>>>> e9e9830d997916d712abf416c2c2f1193c74b6e2
         if append:
             mode = "a"
         else:
@@ -99,7 +103,11 @@ class Cache_Manager():
                 writer = csv.writer(csvfile)
                 writer.writerow(data)
 
+<<<<<<< HEAD
     def read_csv(csv_path: str, fieldnames):
+=======
+    def read_csv(csv_path, fieldnames):
+>>>>>>> e9e9830d997916d712abf416c2c2f1193c74b6e2
         ret = dict()
         with open(f"{csv_path}.csv", "r") as csvfile:
             reader = csv.DictReader(csvfile, fieldnames=fieldnames)
@@ -117,6 +125,12 @@ class Cache_Manager():
                 data[file] = csv.DictReader(csvfile, fieldnames=self.csv_fieldnames)
 
         return data
+<<<<<<< HEAD
+=======
+    
+    def save_loadout(self, loadout):
+        
+>>>>>>> e9e9830d997916d712abf416c2c2f1193c74b6e2
 
     def load_from_cache(self):
         names = dict()
@@ -133,7 +147,11 @@ class Cache_Manager():
         return names
 
     def debug(self):
+<<<<<<< HEAD
         pass
+=======
+        
+>>>>>>> e9e9830d997916d712abf416c2c2f1193c74b6e2
 
 if __name__ == "__main__":
     c = Cache_Manager()

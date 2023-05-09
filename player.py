@@ -3,7 +3,9 @@ import equipment
 
 class Player:
     #Will need to add mage/ranged stuff too but melee will work for now
-    def __init__(self, str_lvl, str_bonus, boost, prayer, style_bonus, equipment, void=False, salve=False, salve_i=False, slayer=False):
+    def __init__(self, str_lvl, boost, prayer, style_bonus, loadout, type=1, void=False, salve=False, salve_i=False, slayer=False):
+        #For type:
+        #1 is melee, 2 is ranged, 3 is mage
         self.str_lvl = str_lvl
         self.boost = boost
         self.prayer = prayer
@@ -12,10 +14,28 @@ class Player:
         self.salve = salve
         self.salve_i = salve_i
         self.slayer = slayer
-        self.equipment = equipment
+        self.type = type
+        self.update_equipment(loadout)
 
-    def get_equipment_stats(self):
-        stats = self.equipment.get_bonuses()
+    def update_equipment(self, loadout):
+        self.loadout = loadout
+        self.str_bonus = self.get_equipment_str()
+
+    def get_equipment_str(self):
+        stats = self.loadout.get_bonuses()
+
+        if self.type == 1:
+            return stats["str"]
+        elif self.type == 2:
+            return stats["range_str"]
+        elif self.type == 3:
+            return stats["mage_str"]
+        else:
+            Exception("Invalid Type Given")
+
+
+
+        
 
     def eff_str_lvl(self):
         str = ((self.str_lvl + self.boost) * self.prayer) + self.style_bonus + 8
